@@ -449,6 +449,7 @@ public class SyncService extends DaggerService {
                 SyncRepo repo = dataRepository.getRepo(repoUri);
                 if (repo instanceof TwoWaySyncRepo) {
                     handleTwoWaySync(dataRepository, (TwoWaySyncRepo) repo, namesake);
+                    Log.d("Git", "Status for " + namesake.getName() + " is " + namesake.getStatus());
                     return BookAction.forNow(
                             BookAction.Type.INFO,
                             namesake.getStatus().msg(repo.getUri().toString()));

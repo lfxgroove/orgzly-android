@@ -2,6 +2,7 @@ package com.orgzly.android.sync;
 
 import android.content.Context;
 import android.net.Uri;
+import android.util.Log;
 
 import com.orgzly.android.BookName;
 import com.orgzly.android.db.entity.BookView;
@@ -199,6 +200,10 @@ public class BookNamesake {
                 }
 
             } else { /* Remote book has been modified. */
+                // kektest:
+                // latestLinked: da6681ccf090589ba42672492128b834dc6a8419 is commit from local pc changing butt
+                //     syncedTo: d14a0e0c148a93a462c0e8e0d8b233457882b951 is commit changing kektest last time, da6681 is newer than d14a0
+                Log.d("Git", "book: " + book.getBook().getName() + ", latestLinkedRev: " + latestLinkedRook.getRevision() + ", booksSyncedToRev: " + book.getSyncedTo().getRevision());
                 if (book.isOutOfSync()) {
                     /* Uh oh. Both local and remote modified. */
                     status = BookSyncStatus.CONFLICT_BOTH_BOOK_AND_ROOK_MODIFIED;
